@@ -37,6 +37,13 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public void deleteById(long id) {
         User userById = entityManager.find(User.class, id);
-        entityManager.remove(userById);
+        if (userById != null) {
+            userById.setPet(null);
+            entityManager.merge(userById);
+            entityManager.flush();
+            entityManager.remove(userById);
+        } else {
+            System.out.println("Пользователь не найден");
+        }
     }
 }

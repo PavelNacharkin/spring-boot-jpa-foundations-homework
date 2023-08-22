@@ -3,21 +3,21 @@ package ru.itsjava.domain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 
 @Data
-@RequiredArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "Users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private final String name;
-    private final int age;
+    private  String name;
+    private  int age;
 
-    @OneToOne(targetEntity = Pet.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "pet_id")
-    private final Pet pet;
+    @ManyToOne(targetEntity = Pet.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "pet_id", nullable = true)
+    private  Pet pet;
 }
