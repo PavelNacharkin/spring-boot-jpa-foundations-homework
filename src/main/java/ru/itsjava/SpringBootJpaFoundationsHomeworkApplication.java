@@ -1,6 +1,5 @@
 package ru.itsjava;
 
-import jakarta.transaction.Transactional;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +12,7 @@ import ru.itsjava.repository.UserRepository;
 import java.sql.SQLException;
 
 
-@Transactional
+
 @SpringBootApplication
 public class SpringBootJpaFoundationsHomeworkApplication {
 
@@ -34,19 +33,15 @@ public class SpringBootJpaFoundationsHomeworkApplication {
 
 
         User insertUser = new User(4L, "Oleg", 45, petById);
-        userRepository.insert(insertUser);
+        userRepository.save(insertUser);
         System.out.println("userRepository.getById(4L) = " + userRepository.getById(4L));
 
 
         insertUser.setName(" Oleg Popov");
-        userRepository.update(insertUser);
+        userRepository.save(insertUser);
         System.out.println("userRepository.getById(4L) = " + userRepository.getById(4L));
 
         userRepository.deleteById(4L);
-        System.out.println("userRepository.getById(4L) = " + userRepository.getById(4L));
-
-        userRepository.deleteById(5L);
-        System.out.println("userRepository.getById(5L) = " + userRepository.getById(5L));
-
+        System.out.println("userRepository.findById(4L).isPresent() = " + userRepository.findById(4L).isPresent());
     }
 }
