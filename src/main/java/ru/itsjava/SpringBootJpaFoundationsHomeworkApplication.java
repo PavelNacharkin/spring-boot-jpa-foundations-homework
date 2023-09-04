@@ -2,46 +2,26 @@ package ru.itsjava;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import ru.itsjava.domain.Pet;
-import ru.itsjava.domain.User;
-import ru.itsjava.repository.PetRepository;
-import ru.itsjava.repository.UserRepository;
+import ru.itsjava.service.PetService;
+import ru.itsjava.service.UserService;
 
 
 import java.sql.SQLException;
-
 
 
 @SpringBootApplication
 public class SpringBootJpaFoundationsHomeworkApplication {
 
     public static void main(String[] args) throws SQLException {
-        ApplicationContext context = SpringApplication.run(SpringBootJpaFoundationsHomeworkApplication.class, args);
+        var context = SpringApplication.run(SpringBootJpaFoundationsHomeworkApplication.class, args);
 
-        PetRepository petRepository = context.getBean(PetRepository.class);
+        UserService userService = context.getBean(UserService.class);
+        userService.printListOfUsersEqualTo(3);
+        userService.changeName(1l, "Petr");
+        userService.printListOfUsersEqualTo(3);
 
-        Pet petById = petRepository.getById(2L);
+        PetService petService = context.getBean(PetService.class);
+        petService.printAllPets();
 
-        System.out.println("petById = " + petById);
-        System.out.println("petRepository.findAll() = " + petRepository.findAll());
-
-
-        UserRepository userRepository = context.getBean(UserRepository.class);
-
-        System.out.println("userRepository.getById(1L) = " + userRepository.getById(1L));
-
-
-        User insertUser = new User(4L, "Oleg", 45, petById);
-        userRepository.save(insertUser);
-        System.out.println("userRepository.getById(4L) = " + userRepository.getById(4L));
-
-
-        insertUser.setName(" Oleg Popov");
-        userRepository.save(insertUser);
-        System.out.println("userRepository.getById(4L) = " + userRepository.getById(4L));
-
-        userRepository.deleteById(4L);
-        System.out.println("userRepository.findById(4L).isPresent() = " + userRepository.findById(4L).isPresent());
     }
 }
