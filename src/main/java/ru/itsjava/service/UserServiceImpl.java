@@ -46,4 +46,10 @@ public class UserServiceImpl implements UserService {
             System.out.println("Пользователь не найден!");
         }
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 }

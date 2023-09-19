@@ -13,7 +13,7 @@ import java.util.List;
 public class PetServiceImpl implements PetService {
     private final PetRepository petRepository;
 
-@Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     @Override
     public void printAllPets() {
         List<Pet> petList = petRepository.findAll();
