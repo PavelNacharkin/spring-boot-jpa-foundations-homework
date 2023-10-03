@@ -15,11 +15,13 @@ public class UserDto {
 
 
     public static User fromDto(UserDto userDto) {
-        long id = Long.parseLong(userDto.id);
+        if (userDto.id == null){
+            userDto.id = "0";
+        }
         int age = Integer.parseInt(userDto.age);
         Pet pet = new Pet(0l, userDto.pet);
 
-        return new User(id, userDto.name, age, pet);
+        return new User(Long.parseLong(userDto.id), userDto.name, age, pet);
     }
 
     public static UserDto toDto(User user) {

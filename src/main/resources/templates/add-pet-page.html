@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add pet</title>
+</head>
+<body>
+
+<form id="add-pet-form" th:action="@{/pet/add}" th:method="post" action="add-pet-page.html">
+    <h1>Pet Info:</h1>
+
+    <div class="row">
+        <label for="name-input">Breed:</label>
+        <input id="name-input" name="breed" type="text" value=""/>
+    </div>
+</form>
+
+</body>
+</html>
