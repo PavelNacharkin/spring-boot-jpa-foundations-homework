@@ -7,12 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.itsjava.domain.Pet;
-import ru.itsjava.domain.User;
 import ru.itsjava.rest.dto.PetDto;
-import ru.itsjava.rest.dto.UserDto;
 import ru.itsjava.service.PetService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

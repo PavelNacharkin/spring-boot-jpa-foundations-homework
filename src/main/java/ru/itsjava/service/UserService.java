@@ -1,7 +1,5 @@
 package ru.itsjava.service;
 
-
-import ru.itsjava.domain.Pet;
 import ru.itsjava.domain.User;
 
 import java.util.List;
