@@ -1,14 +1,23 @@
 <html lang="en" xmlns:th="http//www.thymeleaf.org">
-
-Start Page
+<head>
+    <title>Start Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <meta charset="UTF-8"/>
+</head>
 <body>
+<p>Таблица моделей некоторых смартфонов Samsung.</p>
 <table border="2">
+    <style>td {
+    width: 200px;
+    height: 100px;
+    } </style>
     <tr>
         <td><a th:href="@{/pet}" href="pets-page.html"> Pet </a></td>
     </tr>
     <tr>
         <td><a th:href="@{/users}" href="users-page.html"> User </a></td>
     </tr>
+
 </table>
 </body>
 </html>
